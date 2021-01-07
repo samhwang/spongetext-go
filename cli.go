@@ -21,7 +21,7 @@ func spongeCLI(c *cli.Context) error {
 		input = getUserInput()
 	} else {
 		tailParams := args.Tail()
-		input := firstParam
+		input = firstParam
 		if len(tailParams) > 0 {
 			input += " " + strings.Join(tailParams, " ")
 		}
