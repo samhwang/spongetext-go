@@ -15,11 +15,11 @@ func spongeCLI(c *cli.Context) error {
 	args := c.Args()
 
 	input := ""
-	firstParam := args.First()
-	noInitialParameters := firstParam == ""
+	noInitialParameters := args.Present() == false
 	if noInitialParameters {
 		input = getUserInput()
 	} else {
+		firstParam := args.First()
 		tailParams := args.Tail()
 		input = firstParam
 		if len(tailParams) > 0 {
@@ -32,7 +32,7 @@ func spongeCLI(c *cli.Context) error {
 	for sameAsSource {
 		spongetext = spongify(input)
 	}
-	fmt.Printf("%s\n", spongetext)
+	fmt.Printf("\n%s\n", spongetext)
 	return nil
 }
 
