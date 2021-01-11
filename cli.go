@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 
@@ -25,6 +26,11 @@ func spongeCLI(c *cli.Context) error {
 		if len(tailParams) > 0 {
 			input += " " + strings.Join(tailParams, " ")
 		}
+	}
+
+	isStillBlank := input == ""
+	if isStillBlank {
+		log.Fatal("Cannot process blank input!")
 	}
 
 	spongetext := spongify(input)
